@@ -1,0 +1,24 @@
+
+  <%= render "layouts/sidebar" %>
+
+  <table>
+    <h2>Book detail</h2>
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th colspan="1"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |list| %>
+        <tr>
+          <td><%= attachment_image_tag list, :caption, size:10*5, fallback: "no_image.jpg" %></td>
+          <td><%= list.name %></td>
+          <td><%= link_to 'Show', "/users/#{list.id}" %></td>
+          <td><br></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

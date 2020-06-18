@@ -1,0 +1,30 @@
+
+
+<%= render partial: 'layouts/sidebar', locals: { book:@book} %>
+
+  <table>
+    Books
+      <thead>
+        <tr>
+          <th colspan="1"></th>
+          <th>User</th>
+          <th>Title</th>
+          <th>Opinion</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
+
+
+    <tbody>
+        <% @books.each do |list| %>
+        <% @users = list.user %>
+        <tr>
+          <td><%= attachment_image_tag @users , :caption, size:10*5, fallback: "no_image.jpg" %></td>
+          <td><%= list.user.name %></td>
+          <td><%= link_to list.title, book_path(list.id) %></td>
+          <td><%= list.body %></td>
+          <td><br></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

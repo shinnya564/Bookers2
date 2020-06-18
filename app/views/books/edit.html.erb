@@ -1,0 +1,15 @@
+
+    <div class="body-wrap">
+      <section class="slice slice-lg sct-color-1">
+        <h2 class="form-header-title">Editing Book</h2>
+        <%= form_for(@book) do |f| %>
+          <h5 >Name　</h5>
+          <%= f.text_field :title %>
+          <h5>Opinion</h5>
+          <%= f.text_field :body %>
+          <h5><%= f.submit "Update Book" %></h5>
+        <% end %>
+      </section>
+      <%= link_to 'Show', "/books/#{@book.id}" %>|
+      <%= link_to 'Back', "/books" %>
+    </div>

@@ -1,0 +1,45 @@
+
+<div>
+    <% if book.errors.any? %>
+      <p><%= book.errors.count %> errors prohibited this book from being saved:</p>
+        <ul>
+          <% book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+    <% end %>
+</div>
+
+<div class='row'>
+  <div class='col-xs-4'>
+        <h3>User info</h3>
+        <table class='table'>
+          <%= attachment_image_tag @user, :caption, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+          <tr>
+            <th>name</th>
+            <th><%= @user.name %></th>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th><%= @user.introduction %></th>
+          </tr>
+          <% if current_user.id == @user.id %>
+            <th><%= link_to '設定',"#{user_path(current_user.id)}/edit"%></th>
+          <% else %>
+          <% end %>
+        </table>
+    </def>
+    <div class='col-xs-9'>
+       <table>
+          <h3>New book</h3>
+          <%= form_for(book) do |f| %>
+            <h5>タイトル</h5>
+            <%= f.text_field :title %>
+            <h5>本文</h5>
+            <%= f.text_area :body %>
+            <h5></h5>
+            <%= f.submit 'Create Book' %>
+          <% end %>
+        </table>
+  </div>
+</div>
