@@ -1,9 +1,8 @@
 
-  <%= render "layouts/cheak" %>
-  <%= render partial: 'layouts/sidebar', locals: { book:@book} %>
+<%= render partial: 'layouts/sidebar', locals: { book:@book, user:@user} %>
 
 <div class='row'>
-  <div class='col-xs-4'>
+  <div class='col-xs-5'>
         <table class='table'>
           <h2>Books</h2>
         	<thead>
@@ -17,16 +16,17 @@
           <tbody>
 	        	<% @user.books.each do |list| %>
     	      		<tr>
-                  <td><%= attachment_image_tag @user, :caption, size:10*5, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %></td>
-	        	    	<td>
-                    <%= link_to(book_path(list.id)) do %>
-                      <%= list.title %>
+                  <td>
+                    <%= link_to user_path(@user) do %>
+                    <%= attachment_image_tag @user, :profile_image, size:10*5, fallback: "no_image.jpg" %>
                     <% end %>
+                  </td>
+	        	    	<td><%= link_to list.title,book_path(list.id) %>
                   </td>
 	            		<td><%= list.body %></td>
 		          	</tr>
 	        	<% end %>
 	        </tbody>
         </table>
-      </div>
-    </div>
+</div>
+</div>

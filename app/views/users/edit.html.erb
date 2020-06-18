@@ -16,7 +16,7 @@
         <%= form_for(@user) do |f| %>
           <h5 >Name　<%= f.text_field :name %></h5>
           <h5>Image</h5>
-          <%= f.attachment_field :caption %>
+          <%= f.attachment_field :profile_image %>
           <h5>Introduction<%= f.text_field :introduction %></h5>
           <%= f.submit "Update User" %>
         <% end %>
